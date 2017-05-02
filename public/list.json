@@ -1,5 +1,9 @@
 {
     "data": [{
+        "song_name": "少年游",
+        "artist": "任贤齐",
+        "lrc_name": "sny"
+    }, {
         "song_name": "浮梦逍遥",
         "artist": "董贞",
         "lrc_name": "fmxy"

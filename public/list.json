@@ -1,5 +1,9 @@
 {
     "data": [{
+        "song_name": "我们站在雨中",
+        "artist": "韩磊",
+        "lrc_name": "wmzzyz"
+    }, {
         "song_name": "少年游",
         "artist": "任贤齐",
         "lrc_name": "sny"

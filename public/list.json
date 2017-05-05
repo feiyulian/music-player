@@ -1,19 +1,23 @@
 {
     "data": [{
+        "song_name": "天仙子",
+        "artist": "谢雨欣",
+        "lrc_name": "fairy"
+    }, {
         "song_name": "我们站在雨中",
         "artist": "韩磊",
-        "lrc_name": "wmzzyz"
+        "lrc_name": "we-are-standing-in-the-rain"
     }, {
         "song_name": "少年游",
         "artist": "任贤齐",
-        "lrc_name": "sny"
+        "lrc_name": "juvenile-tour"
     }, {
         "song_name": "浮梦逍遥",
         "artist": "董贞",
-        "lrc_name": "fmxy"
+        "lrc_name": "floating-dream"
     }, {
         "song_name": "杯莫停",
         "artist": "邓洁琼",
-        "lrc_name": "bmt"
+        "lrc_name": "cups-stop"
     }]
 }

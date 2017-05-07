@@ -1,5 +1,9 @@
 {
     "data": [{
+        "song_name": "风卷残云",
+        "artist": "小旭音乐",
+        "lrc_name": "the-wind-is-dead"
+    }, {
         "song_name": "千年缘",
         "artist": "心然",
         "lrc_name": "the-millennium-edge"

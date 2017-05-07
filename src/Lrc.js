@@ -32,7 +32,7 @@ class Lrc extends Component {
 
         if(numTime <= time) {
           this.setState({
-            lrc : arr[i].slice(10),
+            lrc : arr[i].split(']')[1],
           })
         }
       }

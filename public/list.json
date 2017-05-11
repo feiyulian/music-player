@@ -1,5 +1,9 @@
 {
     "data": [{
+        "song_name": "双侠",
+        "artist": "无极生",
+        "lrc_name": "two-knight"
+    }, {
         "song_name": "青苔",
         "artist": "夏米雅",
         "lrc_name": "moss"

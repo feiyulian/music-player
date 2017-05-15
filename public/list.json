@@ -1,5 +1,9 @@
 {
     "data": [{
+        "song_name": "绝世",
+        "artist": "张克帆",
+        "lrc_name": "peerless"
+    }, {
         "song_name": "旧梦重弹",
         "artist": "朱洁",
         "lrc_name": "old-dream-heavy"

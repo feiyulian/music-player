@@ -1,43 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Lrc from './Lrc';
-const list = require('../public/list.json');
+import List from './List';
 
-let index = 0;
 class App extends Component {
-  setTime (e) {
-    this.setState({
-      time: this.refs.audio.currentTime
-    });
-  }
 
-  nextMusic () {
-    index++;
-    this.setState({
-      time: 0,
-      index: index,
-    });
+  componentDidMount () {
+    // console.log(this.state);
   }
 
   render() {
-    let tmp = list.data;
-    // play music in order
-    if (index > tmp.length - 1) {
-      index = 0;
-    }
-    const name = tmp[index].lrc_name;
-    const music = 'musics/' + name + '.mp3';
-    const lrc = 'musics/' + name + '.lrc';
-
+    // let name = this.state.data[5]['lrc_name'];
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Music Colletion</h2>
-          <audio autoPlay controls src={music} onTimeUpdate={this.setTime.bind(this)} onEnded={this.nextMusic.bind(this)} ref="audio"></audio>
+      <div className="app">
+        <h2>乐集</h2>
+        <h3>凡音之起，由人心生也</h3>
+        <p>音乐是不假任何外力，直接沁人心脾的最纯的感情的火焰；它是从口吸入的空气，它是生命的血管中流通着的血液。</p>
+        <div className="container">
+
         </div>
-        <Lrc lrc={lrc} time={this.state ? this.state.time : 0} index={this.state ? this.state.index : 0}/>
+        <List />
+        <footer>
+          <p>
+            <span>&copy; {(new Date()).getFullYear()} </span>
+            <a href="http://www.chunqiuyiyu.com">春秋一语</a>
+          </p>
+        </footer>
       </div>
     );
   }

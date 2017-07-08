@@ -1,24 +1,76 @@
 import React, { Component } from 'react';
-import './App.css';
+import Header from './Header';
+import Meta from './Meta';
 import List from './List';
+import Lrc from './Lrc';
+import Time from './Time';
+import Control from './Controls';
+import json from '../public/list.json';
+import './App.css';
+
 
 class App extends Component {
 
-  componentDidMount () {
-    // console.log(this.state);
+  constructor () {
+    super();
+    this.state = {
+      index: 0,
+      time: 0,
+      duration: 0
+    }
   }
 
-  render() {
-    // let name = this.state.data[5]['lrc_name'];
+  setDuration (e) {
+    this.setState({
+      duration: e.currentTarget.duration
+    });
+  }
+
+  setNext () {
+    let index = this.state.index;
+    index++;
+    // play music in order
+    index = index === json.data.length ? 0 : index;
+    this.setState({
+      index
+    });
+  }
+
+  setTime (e) {
+    this.setState({
+      time: Math.floor(e.currentTarget.currentTime)
+    });
+  }
+
+  onChildChange (index) {
+    this.setState({
+      index
+    });
+  }
+
+  onControlChange (isPlayMusic) {
+    const audio = this.refs.audio;
+    isPlayMusic ? audio.play() : audio.pause();
+  }
+
+  render () {
     return (
       <div className="app">
-        <h2>乐集</h2>
-        <h3>凡音之起，由人心生也</h3>
-        <p>音乐是不假任何外力，直接沁人心脾的最纯的感情的火焰；它是从口吸入的空气，它是生命的血管中流通着的血液。</p>
+        <Header />
         <div className="container">
+          <audio autoPlay src={`musics/${json.data[this.state.index].lrc_name}.mp3` }
+            onEnded={this.setNext.bind(this)}
+            onTimeUpdate={this.setTime.bind(this)}
+            onCanPlay={this.setDuration.bind(this)}
+            ref="audio"></audio>
 
+          <Meta time={this.state.time} index={this.state.index} duration={this.state.duration} />
+          <Lrc name={json.data[this.state.index].lrc_name} time={this.state.time} />
+          <Control callbackParent={this.onControlChange.bind(this)} index={this.state.index} />
+          <Time duration={this.state.duration} time={this.state.time} />
         </div>
-        <List />
+
+        <List callbackParent={this.onChildChange.bind(this)} index={this.state.index} />
         <footer>
           <p>
             <span>&copy; {(new Date()).getFullYear()} </span>

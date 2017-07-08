@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './List.css';
-import list from '../public/list.json';
+import json from '../public/list.json';
 
 class List extends Component {
   constructor() {
@@ -10,19 +10,16 @@ class List extends Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
-  setCurrent(e) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      index: e.currentTarget.children[1].innerText - 1
+      index: nextProps.index
     });
   }
 
-  setNext(e) {
-    let index = this.state.index;
-    index++;
+  setCurrent(e) {
+    let index = e.currentTarget.children[1].innerText - 1;
+    this.props.callbackParent(index);
+
     this.setState({
       index
     });
@@ -31,10 +28,9 @@ class List extends Component {
   render() {
     return (
       <div>
-        <audio src={`musics/${list.data[this.state.index].lrc_name}.mp3`} onEnded={this.setNext.bind(this)} autoPlay></audio>
         <ol>
           {
-            list.data.map((item, i) => {
+            json.data.map((item, i) => {
               return (
                 <li key={i}  onClick={this.setCurrent.bind(this)} className={i === this.state.index ? 'is-playing' : ''}>
                   <span className="current" style={{display: i === this.state.index ? 'block' : ''}}></span>

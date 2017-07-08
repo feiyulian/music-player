@@ -7,7 +7,7 @@
 .container {
   position: relative;
   box-sizing: border-box;
-  height: 5rem;
+  height: 5.25rem;
   box-shadow: rgba(59, 59, 177, 0.180392) 0px 0px 20px;
   background: rgb(255, 255, 255);
 }

@@ -1,4 +1,14 @@
 # music-player
->凡音之起，由人心生也。
+基于 [create-react-app](https://github.com/facebookincubator/create-react-app) 脚手架工具实现的音乐播放器。
 
-音乐是不假任何外力，直接沁人心脾的最纯的感情的火焰；它是从口吸入的空气，它是生命的血管中流通着的血液。
+## 如何开始
+
+```shell
+git clone https://github.com/chunqiuyiyu/music-player.git
+cd music-player
+npm install
+npm start
+```
+
+## 已经实现
+

@@ -18,7 +18,7 @@ npm start
 - 基本的播放功能（音乐的播放与暂停、顺序播放）
 
 ## 示例
-Demo
+[Demo](http://www.chunqiuyiyu.com/music/)
 
 ## 添加音乐
 1. 添加音乐文件与对应歌词文件（文件名保证一致）到`./public/musics/`路径

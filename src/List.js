@@ -10,9 +10,19 @@ class List extends Component {
     }
   }
 
+  componentDidMount() {
+    // scroll curent list item to view area
+    this.refs.list.scrollTop = 32 * (this.props.index - 2);
+  }
+
   componentWillReceiveProps(nextProps) {
+    const index = nextProps.index;
+    if (nextProps.isScroll) {
+      this.refs.list.scrollTop = 32 * (this.props.index - 2);
+    }
+
     this.setState({
-      index: nextProps.index
+      index
     });
   }
 
@@ -28,7 +38,7 @@ class List extends Component {
   render() {
     return (
       <div>
-        <ol>
+        <ol ref='list'>
           {
             json.data.map((item, i) => {
               return (

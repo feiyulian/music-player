@@ -8,16 +8,34 @@ import Control from './Controls';
 import json from '../public/list.json';
 import './App.css';
 
-
 class App extends Component {
 
   constructor () {
     super();
+    const index = this.getCurrent();
     this.state = {
-      index: 0,
+      index,
       time: 0,
-      duration: 0
+      duration: 0,
+      isScroll: false
     }
+  }
+
+  // get the index of music in localStorage
+  getCurrent () {
+    const name = localStorage.getItem('reactMusicPlayer');
+    let index = 0;
+    if (name) {
+      json.data.map((item, i) => {
+        if (JSON.stringify(item) === name) {
+          index = i;
+          return undefined;
+        }
+        return undefined;
+      });
+    }
+
+    return index;
   }
 
   setDuration (e) {
@@ -31,8 +49,12 @@ class App extends Component {
     index++;
     // play music in order
     index = index === json.data.length ? 0 : index;
+    // storage music name
+    localStorage.setItem('reactMusicPlayer', JSON.stringify(json.data[index]));
+
     this.setState({
-      index
+      index,
+      isScroll: true
     });
   }
 
@@ -43,8 +65,10 @@ class App extends Component {
   }
 
   onChildChange (index) {
+    localStorage.setItem('reactMusicPlayer', JSON.stringify(json.data[index]));
     this.setState({
-      index
+      index,
+      isScroll: false
     });
   }
 
@@ -70,7 +94,8 @@ class App extends Component {
           <Time duration={this.state.duration} time={this.state.time} />
         </div>
 
-        <List callbackParent={this.onChildChange.bind(this)} index={this.state.index} />
+        <List callbackParent={this.onChildChange.bind(this)} index={this.state.index}
+          isScroll={this.state.isScroll} />
         <footer>
           <p>
             <span>&copy; {(new Date()).getFullYear()} </span>
